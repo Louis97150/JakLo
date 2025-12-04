@@ -56,26 +56,28 @@ public class YatzyRules {
         return numbers(6, dices);
     }
 
-    private static HashMap<Integer, Integer> count(int... dices) {
+    private static HashMap<Integer, Integer> countRep(int... dices) {
         HashMap<Integer, Integer> count = new HashMap<>();
+        if(valid(dices)){
+            for (int i : dices) {
+                if (count.containsKey(i)) {
+                    count.put(i, count.get(i) + 1);
+                }
 
-        for (int i : dices) {
-            if (count.containsKey(i)) {
-                count.put(i, count.get(i) + 1);
+                else {
+                    count.put(i, 1);
+                }
             }
 
-            else {
-                count.put(i, 1);
-            }
+            return count;
         }
-
         return count;
     }
 
-    private static int maxPair(HashMap<Integer, Integer> count, int... dices) {
+    private static int maxPair(HashMap<Integer, Integer> count, int x, int... dices) {
         int max = 0;
         for (int i : count.keySet()) {
-            if (i > max && count.get(i) >= 2) {
+            if (i > max && count.get(i) >= x) {
                 max = i;
             }
         }
@@ -83,20 +85,56 @@ public class YatzyRules {
     }
 
     public static int pairs(int... dices) {
-        HashMap<Integer, Integer> count = count(dices);
-        return maxPair(count, dices) * 2;
+        HashMap<Integer, Integer> count = countRep(dices);
+        return maxPair(count,2, dices) * 2;
     }
 
     public static int doublePair(int... dices) {
-        HashMap<Integer, Integer> count = count(dices);
-        int x = maxPair(count, dices);
+        HashMap<Integer, Integer> count = countRep(dices);
+        int x = maxPair(count, 2, dices);
         count.remove(x);
-        int y = maxPair(count, dices);
+        int y = maxPair(count, 2, dices);
 
         if (x != 0 && y != 0) {
             return (y + x) * 2;
         }
 
+        return 0;
+    }
+
+    public static int threeTest(int... dices){
+        HashMap<Integer, Integer> count = countRep(dices);
+        int x = maxPair(count, 3, dices);
+
+        return x*3;
+    }
+
+    public static int fourTest(int... dices){
+        HashMap<Integer, Integer> count = countRep(dices);
+        int x = maxPair(count, 4, dices);
+
+        return x*4;
+    }
+
+    public static int sum(int ... dices){
+        if(valid(dices)){
+            int sum = 0;
+            for(int i : dices){
+                sum += i;
+            }
+            return sum;
+        }
+
+        return 0;
+    }
+
+    public static int fullHouse(int ... dices){
+        if(valid(dices)){
+            HashMap<Integer, Integer> count = countRep(dices);
+            if(count.size()==2){
+                return sum(dices);
+            }
+        }
         return 0;
     }
 

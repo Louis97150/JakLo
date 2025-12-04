@@ -29,4 +29,31 @@ public class YatzyTest {
         assertEquals(YatzyRules.doublePair(1, 1, 2, 2, 2), 6);
         assertEquals(YatzyRules.doublePair(3, 3, 3, 3, 1), 0);
     }
+
+    @Test
+    public void thirdPair(){
+        assertEquals(YatzyRules.threeTest(3,3,3,4,5), 9);
+        assertEquals(YatzyRules.threeTest(3,3,4,5,6), 0);
+        assertEquals(YatzyRules.threeTest(3,3,3,3,1), 9);
+    }
+
+    @Test
+    public void forthPair(){
+        assertEquals(YatzyRules.fourTest(2,2,2,2,5), 8);
+        assertEquals(YatzyRules.fourTest(2,2,2,5,5), 0);
+        assertEquals(YatzyRules.fourTest(2,2,2,2,2), 8);
+    }
+
+    @Test
+    public void somme(){
+        assertEquals(YatzyRules.sum(1,2,3,4,5), 15);
+        assertEquals(YatzyRules.sum(2,3,4,5,6), 20);
+    }
+
+    @Test
+    public void house(){
+        assertEquals(YatzyRules.fullHouse(1,1,2,2,2), 8);
+        assertEquals(YatzyRules.fullHouse(2,2,3,3,4), 0);
+        assertEquals(YatzyRules.fullHouse(4,4,4,4,4), 0);
+    }
 }
