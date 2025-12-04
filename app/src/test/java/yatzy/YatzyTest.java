@@ -45,9 +45,13 @@ public class YatzyTest {
     }
 
     @Test
-    public void somme(){
-        assertEquals(YatzyRules.sum(1,2,3,4,5), 15);
-        assertEquals(YatzyRules.sum(2,3,4,5,6), 20);
+    public void smallS(){
+        assertEquals(YatzyRules.smallS(1,2,3,4,5), 15);
+    }
+
+    @Test
+    public void largeS(){
+        assertEquals(YatzyRules.largeS(2,3,4,5,6), 20);
     }
 
     @Test

@@ -128,6 +128,34 @@ public class YatzyRules {
         return 0;
     }
 
+    public static boolean suiteCorrecte(int x, int ... dices){
+        if(valid(dices)){
+            int comp = x;
+            for(int i :dices){
+                if( i != comp){
+                    return false;
+                }
+                comp += 1;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public static int smallS(int ... dices){
+        if(!suiteCorrecte(1, dices)){
+            return 0;
+        }
+        return sum(dices);
+    }
+
+    public static int largeS(int ... dices){
+        if(!suiteCorrecte(2, dices)){
+            return 0;
+        }
+        return sum(dices);
+    }
+
     public static int fullHouse(int ... dices){
         if(valid(dices)){
             HashMap<Integer, Integer> count = countRep(dices);
