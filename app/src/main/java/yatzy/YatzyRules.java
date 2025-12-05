@@ -159,7 +159,7 @@ public class YatzyRules {
     public static int fullHouse(int ... dices){
         if(valid(dices)){
             HashMap<Integer, Integer> count = countRep(dices);
-            if(count.size()==2){
+            if(count.size()==2 && count.containsValue(2)){
                 return sum(dices);
             }
         }
