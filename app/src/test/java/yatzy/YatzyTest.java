@@ -59,5 +59,6 @@ public class YatzyTest {
         assertEquals(YatzyRules.fullHouse(1,1,2,2,2), 8);
         assertEquals(YatzyRules.fullHouse(2,2,3,3,4), 0);
         assertEquals(YatzyRules.fullHouse(4,4,4,4,4), 0);
+        assertEquals(YatzyRules.fullHouse(4,4,4,4,2), 0);
     }
 }
